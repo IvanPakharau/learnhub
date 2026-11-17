@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="layout :: content(~{::body})">
+
+<body>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Users</h3>
+        <div class="card-tools">
+            <a th:href="@{/admin/users/create}" class="btn btn-primary btn-sm">
+                <i class="fas fa-plus"></i> Add User
+            </a>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>Role</th>
+                <th>Created</th>
+                <th style="width: 150px">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.fullName}"></td>
+                <td th:text="${user.role}"></td>
+                <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+                <td>
+                    <a th:href="@{|/admin/users/edit/${user.id}|}" class="btn btn-sm btn-warning">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form th:action="@{|/admin/users/delete/${user.id}|}" method="post"
+                          style="display:inline" onsubmit="return confirm('Delete this user?');">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Admin</title>
+    <link rel="stylesheet" th:href="@{/adminlte/css/adminlte.min.css}">
+    <link rel="stylesheet" th:href="@{/adminlte/plugins/fontawesome-free/css/all.min.css}">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>Hello Admin</h1>
+        </section>
+        <section class="content">
+            <p>Welcome, <span th:text="${username}">Admin</span>!</p>
+        </section>
+    </div>
+</div>
+
+<script th:src="@{/adminlte/js/adminlte.min.js}"></script>
+<script th:src="@{/adminlte/plugins/jquery/jquery.min.js}"></script>
+<script th:src="@{/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
